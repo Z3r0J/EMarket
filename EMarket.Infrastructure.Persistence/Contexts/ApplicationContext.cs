@@ -62,7 +62,7 @@ namespace EMarket.Infrastructure.Persistence.Contexts
             #region Primary Keys
 
             modelBuilder.Entity<User>()
-                .HasKey(user=>user.IdUser);
+                .HasKey(user=>user.Id);
 
             modelBuilder.Entity<Gallery>()
                 .HasKey(gallery => gallery.Id);

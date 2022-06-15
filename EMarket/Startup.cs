@@ -1,3 +1,5 @@
+using EMarket.Core.Application;
+using EMarket.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,17 +15,19 @@ namespace EMarket
 {
     public class Startup
     {
+        public IConfiguration _config { get; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddPersistanceInfrastructure(_config);
+            services.AddApplicationLayer();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

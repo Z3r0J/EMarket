@@ -1,14 +1,14 @@
-﻿using EMarket.Core.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EMarket.Core.Domain.Entities
+namespace EMarket.Core.Application.ViewModel.User
 {
-    public class User : AuditableBaseEntity
+    public class SaveUserViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -16,6 +16,5 @@ namespace EMarket.Core.Domain.Entities
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public ICollection<Advertising> Advertisings { get; set; }
     }
 }
