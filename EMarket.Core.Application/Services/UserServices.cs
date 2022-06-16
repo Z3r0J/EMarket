@@ -44,6 +44,24 @@ namespace EMarket.Core.Application.Services
             return userViewModel;
         }
 
+        public async Task<UserViewModel> Login(LoginViewModel vm) {
+
+            User user = await _userRepository.LoginAsync(vm);
+
+            UserViewModel userViewModel = new() { 
+            Id = user.Id,
+            Name = user.Name,
+            LastName = user.LastName,
+            Email = user.Email,
+            Phone = user.Phone,
+            Username = user.Username,
+            Password = user.Password
+            };
+
+            return userViewModel;
+        
+        }
+
         public async Task<List<UserViewModel>> GetAllViewModel(){
             var userList = await _userRepository.GetAllAsync();
 

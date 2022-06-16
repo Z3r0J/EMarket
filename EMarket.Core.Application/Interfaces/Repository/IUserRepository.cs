@@ -1,4 +1,5 @@
-﻿using EMarket.Core.Domain.Entities;
+﻿using EMarket.Core.Application.ViewModel.User;
+using EMarket.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace EMarket.Core.Application.Interfaces.Repository
 {
     public interface IUserRepository : IGenericRepository<User>
     {
+        Task<User> LoginAsync(LoginViewModel vm);
     }
 }
