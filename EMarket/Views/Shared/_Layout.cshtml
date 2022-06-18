@@ -6,12 +6,16 @@
     <title>@ViewData["Title"] - EMarket</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-custom border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EMarket</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index"><span style="color:#0b403f; font-size:27px;">EM</span>arket</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,10 +23,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
@@ -35,9 +39,27 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - EMarket - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted bg-dark">
+        <div class="container text-white">
+            <div class="row d-grid mb-0 float-start">
+                <div class="col-10">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index"><span style="color:#0b403f; font-size:27px;">EM</span>arket</a>
+                </div>
+                <div class="col-3">
+                 &copy; @DateTime.Now.Year - EMarket  
+                </div>
+            </div>
+
+            <div class="row d-grid float-end">
+                <div class="col-md-3">
+                    <span>Follow On: </span>
+                </div>
+                <div class="col-md-12 d-inline-flex">
+                    <a href="" class="fa-brands fa-facebook btn btn-light me-2"></a>
+                    <a href="" class="fa-brands fa-tiktok btn btn-light me-2"></a>
+                    <a href="" class="fa-brands fa-instagram btn btn-light me-2"></a>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

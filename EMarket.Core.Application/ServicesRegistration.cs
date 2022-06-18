@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EMarket.Core.Application.Interfaces.Services;
+using EMarket.Core.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace EMarket.Core.Application
 
             #region Services
 
+            service.AddTransient<IUserServices,UserServices>();
 
 
             #endregion

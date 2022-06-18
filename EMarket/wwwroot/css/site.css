@@ -7,9 +7,41 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.bg-custom {
+    background: #299a95 !important;
+}
+
+.icon-input {
+    position: absolute;
+    margin-left: 12px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-top: 9px;
+}
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
 }
 
 .btn-primary {

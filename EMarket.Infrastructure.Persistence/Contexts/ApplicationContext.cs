@@ -139,9 +139,12 @@ namespace EMarket.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<Advertising>()
                 .Property(advertising => advertising.Price)
                 .IsRequired();
+            modelBuilder.Entity<Advertising>()
+                .Property(advertising => advertising.PrincipalPhoto)
+                .IsRequired();
 
             #endregion
-            
+
             #region Category
 
             modelBuilder.Entity<Category>()

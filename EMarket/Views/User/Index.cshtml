@@ -1,0 +1,36 @@
+﻿@using EMarket.Core.Application.ViewModel.User
+
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid vh-100">
+    <div class="row mb-5">
+        <div class="col-5 offset-4">
+            <div class="card bg-white shadow shadow-lg">
+                <div class="card card-header">EMarket Login</div>
+                <div class="card-body">
+                    @Html.ValidationSummary(false,"",new{@class="text-danger"});
+                   <form method="post" asp-action="Index" asp-controller="User">
+                    <div class="form-group">
+                        <label asp-for="Username" class="form-label mb-2 mt-3">Username:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="Username" class="form-control ps-5" placeholder="Username"/>
+
+                        <label asp-for="Password" class="form-label mb-2 mt-3">Password:</label>
+                        <span class="icon-input"><i class="fa fa-lock navbar-toggler-icon"></i></span>
+                        <input asp-for="Password" class="form-control ps-5" placeholder="Username"/>
+                    </div>
+                    <div class="col-lg-5 me-2 mt-4 mb-1 float-end">
+                        <button type="submit" class="btn btn-outline-primary w-100">Login</button>
+                    </div>
+                </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
