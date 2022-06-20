@@ -39,5 +39,13 @@ namespace EMarket.Infrastructure.Persistence.Repositories
 
         }
 
-    }
+        public async Task<User> CheckUserName(string username)
+        {
+
+            User user = await _applicationContext.Set<User>().FirstOrDefaultAsync(user => user.Username == username);
+
+            return user;
+        }     
+            
 }
+        }

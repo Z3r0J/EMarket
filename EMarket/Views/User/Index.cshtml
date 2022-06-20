@@ -12,7 +12,7 @@
             <div class="card bg-white shadow shadow-lg">
                 <div class="card card-header">EMarket Login</div>
                 <div class="card-body">
-                    @Html.ValidationSummary(false,"",new{@class="text-danger"});
+                    @Html.ValidationSummary(false,"",new{@class="text-danger"})
                    <form method="post" asp-action="Index" asp-controller="User">
                     <div class="form-group">
                         <label asp-for="Username" class="form-label mb-2 mt-3">Username:</label>

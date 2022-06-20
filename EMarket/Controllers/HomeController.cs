@@ -6,32 +6,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.EMarket.Middlewares;
 
 namespace EMarket.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public readonly ValidateUserSession _validateUserSession;
+        public HomeController(ValidateUserSession validateUserSession)
         {
-            _logger = logger;
+            _validateUserSession = validateUserSession;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return _validateUserSession.HasUser() ? View() : RedirectToRoute(new { action = "Index", controller = "User" });
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
