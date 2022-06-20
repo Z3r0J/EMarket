@@ -1,0 +1,83 @@
+﻿@using EMarket.Core.Application.ViewModel.User
+
+@model SaveUserViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container-fluid vh-100">
+    <div class="row">
+        <div class="col-5 offset-4">
+            <div class="card bg-white shadow shadow-lg mb-5">
+                <div class="card card-header">EMarket Register</div>
+                <div class="card-body">
+                   <form method="post" asp-action="Register" asp-controller="User">
+                    <div class="form-group">
+                        
+                        <div class="row">
+                            <div class="col-6">
+                         <label asp-for="Name" class="form-label">Name:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="Name" class="form-control ps-5" placeholder="Name"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                        <label asp-for="LastName" class="form-label">Lastname:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="LastName" class="form-control ps-5" placeholder="Lastname"/>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                         <label asp-for="Phone" class="form-label">Phone:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="Phone" class="form-control ps-5" placeholder="Phone"/>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                           <div class="col-6">
+                        <label asp-for="Email" class="form-label">Email:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="Email" class="form-control ps-5" placeholder="Email"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                         <label asp-for="Username" class="form-label">Username:</label>
+                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
+                        <input asp-for="Username" class="form-control ps-5" placeholder="Username"/>
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="col-6">
+                        <label asp-for="Password" class="form-label">Password:</label>
+                        <span class="icon-input"><i class="fa fa-lock navbar-toggler-icon"></i></span>
+                        <input asp-for="Password" class="form-control ps-5" placeholder="Password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                            <label asp-for="ConfirmPassword" class="form-label">Confirm Password:</label>
+                        <span class="icon-input"><i class="fa fa-lock navbar-toggler-icon"></i></span>
+                        <input asp-for="ConfirmPassword" class="form-control ps-5" placeholder="Confirm Password"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        </div>
+
+                    <div class="col-lg-5 me-2 mt-4 mb-1 float-end">
+                        <button type="submit" class="btn btn-outline-primary w-100">Login</button>
+                        <a class="btn btn-outline-primary w-100" asp-action="Index" asp-controller="User">Back to List</a>
+                    </div>
+                </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
