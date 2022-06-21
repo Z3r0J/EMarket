@@ -2,8 +2,9 @@
 
 namespace EMarket.Core.Domain.Entities
 {
-    public class Gallery : AuditableBaseEntity
+    public class Gallery
     {
+        public int GalleryId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
 

@@ -1,0 +1,22 @@
+﻿@using EMarket.Core.Application.ViewModel.Advertising
+@model SaveAdvertisingViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form method="post" asp-action="Create" asp-controller="Advertising" enctype="multipart/form-data">
+
+<input asp-for="Name" />
+<input asp-for="Description" />
+<input asp-for="Price" />
+<select asp-for="CategoryId">
+    <option value="1">Category 1</option>
+</select>
+<input asp-for="Photos"/>
+
+<button type="submit">Send Data</button>
+</form>
+
