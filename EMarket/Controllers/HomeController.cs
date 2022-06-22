@@ -1,4 +1,5 @@
-﻿using EMarket.Models;
+﻿using EMarket.Core.Application.Interfaces.Services;
+using EMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,16 +13,19 @@ namespace EMarket.Controllers
 {
     public class HomeController : Controller
     {
-
+        public readonly IAdvertisingServices _advertisingServices;
         public readonly ValidateUserSession _validateUserSession;
-        public HomeController(ValidateUserSession validateUserSession)
+        public HomeController(IAdvertisingServices advertisingServices,ValidateUserSession validateUserSession)
         {
             _validateUserSession = validateUserSession;
+            _advertisingServices = advertisingServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return _validateUserSession.HasUser() ? View() : RedirectToRoute(new { action = "Index", controller = "User" });
+            var advertising = await _advertisingServices.GetAllViewModel();
+
+            return _validateUserSession.HasUser() ? View(advertising) : RedirectToRoute(new { action = "Index", controller = "User" });
         }
 
     }

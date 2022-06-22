@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMarket.Core.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace EMarket.Core.Application.ViewModel.Advertising
         public string PrincipalPhoto { get; set; }
         public string Category { get; set; }
         public string User { get; set; }
+
+        public List<Gallery> Gallery {get;set;}
     }
 }

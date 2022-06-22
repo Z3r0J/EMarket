@@ -1,6 +1,10 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+body {
+background:whitesmoke;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -24,6 +28,18 @@ a.navbar-brand {
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+}
+
+.badge-category {
+    border-radius: 0;
+    background: #0bb1aa !important;
+}
+
+.text-currency {
+    color:#1b7571 !important;
+}
+.text-price {
+    color: #0bb1aa;
 }
 
 .divider:after,

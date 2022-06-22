@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EMarket.Core.Application.Interfaces.Services
 {
-    public interface IAdvertisingServices:IGenericTwo<SaveAdvertisingViewModel,AdvertisingViewModel>
+    public interface IAdvertisingServices:IGenericServices<SaveAdvertisingViewModel,AdvertisingViewModel>
     {
         
     }

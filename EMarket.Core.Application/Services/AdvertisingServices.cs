@@ -44,6 +44,40 @@ namespace EMarket.Core.Application.Services
             return viewModel;
         }
 
+        public async Task<List<AdvertisingViewModel>> GetAllViewModel() {
+
+            var response = await _advertisingRepository.GetAllWithIncludeAsync(new() { "Gallery","Categories","User" });
+
+            return response.Select(advertising => new AdvertisingViewModel()
+            {
+                Id = advertising.Id,
+                Name =advertising.Name,
+                Description =advertising.Description,
+                Price = advertising.Price,
+                PrincipalPhoto = advertising.PrincipalPhoto,
+                Category = advertising.Categories.Name,
+                User = advertising.User.Username,
+                Gallery = advertising.Gallery.ToList()
+            }).ToList();
+        
+        }
+
+        public async Task<SaveAdvertisingViewModel> GetByIdSaveViewModel(int id) { 
+        
+            var response = await _advertisingRepository.GetByIdAsync(id);
+
+            return new() { 
+            Id = response.Id,
+            Name = response.Name,
+            Description = response.Description,
+            Price = response.Price,
+            PrincipalPhoto = response.PrincipalPhoto,
+            CategoryId = response.CategoryId,
+            UserId = response.UserId
+            };
+        
+        }
+
         public async Task Update(SaveAdvertisingViewModel vm) {
 
             Advertising advertising = await _advertisingRepository.GetByIdAsync(vm.Id);
@@ -59,6 +93,15 @@ namespace EMarket.Core.Application.Services
             
 
             await _advertisingRepository.UpdateAsync(advertising);
+
+        }
+
+        public async Task Delete(int id) { 
+            
+            Advertising advertising = await _advertisingRepository.GetByIdAsync(id);
+
+            await _advertisingRepository.DeleteAsync(advertising);
+                
 
         }
     }
