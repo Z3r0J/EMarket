@@ -18,7 +18,7 @@ namespace EMarket.Core.Application
 
             service.AddTransient<IUserServices,UserServices>();
             service.AddTransient<IAdvertisingServices,AdvertisingServices>();
-
+            service.AddTransient<ICategoryServices, CategoryServices>();
             #endregion
 
         }

@@ -27,11 +27,10 @@ namespace EMarket.Core.Application.ViewModel.Advertising
         public int CategoryId { get; set; }
         public int UserId { get; set; }
 
-        [Required(ErrorMessage ="Select minimum 1 to 4 photos")]
         [DataType(DataType.Upload)]
         public IFormFileCollection Photos { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public List<Domain.Entities.Category> Categories { get; set; }
         public List<Gallery> Gallery { get; set; }
     }
 }

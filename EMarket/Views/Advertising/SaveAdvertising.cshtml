@@ -2,21 +2,58 @@
 @model SaveAdvertisingViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    bool editMode = Model.Id==0?false:true;
+    ViewData["Title"] = editMode?"Edit":"Create";
 }
 
-<h1>Create</h1>
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-5 offset-4">
+           <div class="card card-border border-custom">
+               <div class="card-body">
+                   <h2 class="card-title">@(@editMode?"Edit Advertising":"Create Advertising")</h2>
+                    
+                    <form method="post" asp-controller="Advertising" asp-action=@(editMode?"Edit":"Create") enctype="multipart/form-data">
+                        <div class="row h-auto mb-3 mt-2">
+                            <div class="col-6">
+                            <label asp-for="Name" class="form-label">Name: </label>
+                           <input asp-for="Name" class="form-control"/>
+                           <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-6">
+                            <label asp-for="Description" class="form-label">Description:</label>
+                           <input asp-for="Description" class="form-control h-75 fs-5"/>
+                           <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
 
-<form method="post" asp-action="Create" asp-controller="Advertising" enctype="multipart/form-data">
-
-<input asp-for="Name" />
-<input asp-for="Description" />
-<input asp-for="Price" />
-<select asp-for="CategoryId">
-    <option value="1">Category 1</option>
-</select>
-<input asp-for="Photos"/>
-
-<button type="submit">Send Data</button>
-</form>
+                        <div class="row h-auto mb-3 mt-2">
+                            <div class="col-6">
+                            <label asp-for="CategoryId" class="form-label">Category: </label>
+                           <select class="form-select select-primary" asp-for="CategoryId">
+                               <option value="0">Select a category</option>
+                           </select>
+                           <span asp-validation-for="CategoryId" step="any" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-6">
+                            <label asp-for="Description" class="form-label">Photos:</label>
+                           @if(editMode){<input asp-for="Photos" class="form-control"/>}
+                           else{<input asp-for="Photos" class="form-control" requiredd/>}
+                           <span asp-validation-for="Photos" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row h-auto mb-3 mt-2">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-custom btn-lg">@(editMode?"Edit":"Create")</button>
+                            </div>
+                        </div>
+                   </form>
+                    
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
 

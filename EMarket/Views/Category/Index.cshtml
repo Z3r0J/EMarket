@@ -1,0 +1,10 @@
+﻿@using EMarket.Core.Application.ViewModel.Category
+@model List<CategoryViewModel>
+@{
+    ViewData["Title"] = "Category";
+}
+
+
+@foreach(CategoryViewModel item in Model){
+@item.UserPerAdvertising
+}
