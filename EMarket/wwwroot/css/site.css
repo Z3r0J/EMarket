@@ -1,6 +1,33 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --background: whitesmoke;
+    --green-custom: #0bb1aa;
+    --button-custom: #0b8c86;
+    --white: white;
+    --button-custom-hover: #0e9093;
+}
+
+* {
+font-family:Poppins;
+}
+
+.border-custom {
+border-color:var(--green-custom)!important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    border-color: var(--button-custom-hover)!important;
+}
+
+body {
+background:var(--background);
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -25,6 +52,29 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
+
+.badge-category {
+    border-radius: 0;
+    background: var(--green-custom) !important;
+}
+
+.text-currency {
+    color:#1b7571 !important;
+}
+.text-price {
+    color: var(--green-custom);
+}
+
+.btn-custom {
+    background:var(--button-custom)!important;
+    color:var(--white);
+}
+
+.btn-custom:hover, .btn-custom:focus {
+    border:0px;
+    color:var(--white);
+    background:var(--button-custom-hover)!important;
+ }
 
 .divider:after,
 .divider:before {

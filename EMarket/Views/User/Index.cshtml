@@ -6,31 +6,54 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container-fluid vh-100">
-    <div class="row mb-5">
-        <div class="col-5 offset-4">
-            <div class="card bg-white shadow shadow-lg">
-                <div class="card card-header">EMarket Login</div>
-                <div class="card-body">
-                    @Html.ValidationSummary(false,"",new{@class="text-danger"})
-                   <form method="post" asp-action="Index" asp-controller="User">
-                    <div class="form-group">
-                        <label asp-for="Username" class="form-label mb-2 mt-3">Username:</label>
-                        <span class="icon-input"><i class="fa fa-user navbar-toggler-icon"></i></span>
-                        <input asp-for="Username" class="form-control ps-5" placeholder="Username"/>
 
-                        <label asp-for="Password" class="form-label mb-2 mt-3">Password:</label>
-                        <span class="icon-input"><i class="fa fa-lock navbar-toggler-icon"></i></span>
-                        <input asp-for="Password" class="form-control ps-5" placeholder="Username"/>
-                    </div>
-                    <div class="col-lg-5 me-2 mt-4 mb-1 float-end">
-                        <button type="submit" class="btn btn-outline-primary w-100">Login</button>
-                    </div>
+<section class="min-vh-100">
+  <div class="container py-5 h-100 mb-4">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card card-border" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="~/Images/2441903.jpg"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form method="post" asp-action="Index" asp-controller="User">
+                  @Html.ValidationSummary(false,"",new{@class="text-danger"})
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cart-shopping fa-2x me-3" style="color: #0b8c86;"></i>
+                    <span class="fw-bold"><span style="color:#0b403f; font-size:27px;">EM</span>arket</span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Welcome Back!</h5>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Username">Username</label>
+                    <input asp-for="Username" class="form-control" />
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Password">Password</label>
+                    <input asp-for="Password" class="form-control" />
+
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-custom btn-lg w-100" type="submit">Login</button>
+                  </div>
+
+                  <p class="mb-5 pb-lg-2">Don't have an account? <a>Register here</a></p>
                 </form>
 
-                </div>
-
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+                  

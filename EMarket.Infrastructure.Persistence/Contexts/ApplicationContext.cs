@@ -65,7 +65,7 @@ namespace EMarket.Infrastructure.Persistence.Contexts
                 .HasKey(user=>user.Id);
 
             modelBuilder.Entity<Gallery>()
-                .HasKey(gallery => gallery.Id);
+                .HasKey(gallery => gallery.GalleryId);
 
             modelBuilder.Entity<Advertising>()
                 .HasKey(advertising=>advertising.Id);

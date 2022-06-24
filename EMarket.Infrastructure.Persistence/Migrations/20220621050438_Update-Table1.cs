@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EMarket.Infrastructure.Persistence.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class UpdateTable1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,19 +85,15 @@ namespace EMarket.Infrastructure.Persistence.Migrations
                 name: "Gallery",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    GalleryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AdvertisingId = table.Column<int>(type: "int", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    AdvertisingId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gallery", x => x.Id);
+                    table.PrimaryKey("PK_Gallery", x => x.GalleryId);
                     table.ForeignKey(
                         name: "FK_Gallery_Advertisings_AdvertisingId",
                         column: x => x.AdvertisingId,

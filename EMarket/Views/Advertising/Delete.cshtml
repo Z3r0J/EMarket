@@ -1,0 +1,12 @@
+﻿@using EMarket.Core.Application.ViewModel.Advertising
+@model SaveAdvertisingViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form asp-action="DeletePost" asp-controller="Advertising">
+    <h1>Are you sure?</h1>
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Delete</button>
+</form>

@@ -1,0 +1,100 @@
+﻿@using EMarket.Core.Application.ViewModel.Advertising
+@model SaveAdvertisingViewModel
+
+@{
+    bool editMode = Model.Id==0?false:true;
+    ViewData["Title"] = editMode?"Edit":"Create";
+}
+
+<div class="container-fluid">
+    
+    <div class="row d-flex justify-content-space-around">
+        @if (Model.Gallery.Count != 0)
+        {
+                 <div class="col-4">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-indicators">
+      @for(int i=0; i<Model.Gallery.Count; i++)
+        {
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i==0?"active":"")" aria-current="true" aria-label="Slide @i"></button>
+    
+        }
+  </div>
+  <div class="carousel-inner">
+        @for(int i=0; i<Model.Gallery.Count; i++)
+        {
+        <div class="@(i==0 ?"carousel-item active":"carousel-item")">
+        <img src="@Model.Gallery[i].Url" class="d-block w-100" alt="@Model.Gallery[i].Name">
+        </div>
+        }
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+        </div>   
+        }
+       <div class="@(editMode?"col-5":"col-5 offset-4")">
+           <div class="card card-border border-custom">
+               <div class="card-body">
+                   <h2 class="card-title">@(@editMode?"Edit Advertising":"Create Advertising")</h2> 
+                   @if (Model.Categories == null || Model.Categories.Count == 0) { 
+                        <h2>Insert a category for add a new Form</h2>
+                    }
+                    else{
+
+                        <form method="post" asp-controller="Advertising" asp-action=@(editMode?"Edit":"Create") enctype="multipart/form-data">
+                        <div class="row h-auto mb-3 mt-2">
+                            <div class="col-6">
+                            <label asp-for="Name" class="form-label">Name: </label>
+                           <input asp-for="Name" class="form-control"/>
+                           <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-6">
+                            <label asp-for="Description" class="form-label">Description:</label>
+                           <input asp-for="Description" class="form-control h-75 fs-5"/>
+                           <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row h-auto mb-3 mt-2">
+                            <div class="col-6">
+                            <label asp-for="CategoryId" class="form-label">Category: </label>
+                           <select class="form-select select-primary" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">
+                               <option value="0">Select a category</option>
+                           </select>
+                           <span asp-validation-for="CategoryId" step="any" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-6">
+                                <label asp-for="Price" class="form-label">Price: </label>
+                                <input type="number" step="any" class="form-control" asp-for="Price"/>
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row h-auto mb-3 mt-2">
+                           <label asp-for="Photos" class="form-label">Photos:</label>
+                           @if(editMode){<input asp-for="Photos" class="form-control"/>}
+                           else{<input asp-for="Photos" class="form-control" requiredd/>}
+                           <span asp-validation-for="Photos" class="text-danger"></span>
+                        </div>
+                        <div class="row h-auto mb-3 mt-2">
+                            <input type="hidden" asp-for="PrincipalPhoto"/>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-custom btn-lg">@(editMode?"Edit":"Create")</button>
+                            </div>
+                        </div>
+                   </form>
+                    }
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+

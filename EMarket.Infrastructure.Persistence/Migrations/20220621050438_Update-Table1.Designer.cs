@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EMarket.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220617174954_Initial-Migration")]
-    partial class InitialMigration
+    [Migration("20220621050438_Update-Table1")]
+    partial class UpdateTable1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,7 +105,7 @@ namespace EMarket.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("EMarket.Core.Domain.Entities.Gallery", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GalleryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -113,25 +113,13 @@ namespace EMarket.Infrastructure.Persistence.Migrations
                     b.Property<int>("AdvertisingId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("GalleryId");
 
                     b.HasIndex("AdvertisingId");
 
