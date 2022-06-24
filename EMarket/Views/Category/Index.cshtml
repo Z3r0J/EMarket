@@ -4,7 +4,34 @@
     ViewData["Title"] = "Category";
 }
 
+<div class="border-start border-custom border-5 d-flex justify-content-between">
+    <h1 class="text-lg-start fs-4">&nbsp;Categories</h1> 
+    <a asp-action="Create" asp-controller="Category" class="btn btn-custom">Create New</a>
+</div>
 
+<div class="container-fluid d-flex justify-content-between mt-5">
+    <div class="row">
 @foreach(CategoryViewModel item in Model){
-@item.UserPerAdvertising
-}
+        <div class="col-4 d-flex mb-5">
+            <div class="card mb-3 card-border border-2 border-custom">
+    <div class="card-body">
+        <h2 class="card-title">@item.Name</h2>
+        <p class="card-text">@item.Description</p>
+        <div class="row h-auto mb-3 mt-2">
+            <div class="col-10 d-flex justify-content-between ms-2 mb-2">
+                <h6 class="text-price">Advertisings: <span>@item.AdvertisingQuantity</span></h6>
+                <h6 class="text-price">Users: <span>@item.UserPerAdvertising</span></h6>
+            </div>
+            <div class="col-6 d-flex justify-content-between float-end">
+                <a asp-action="Edit" asp-controller="Category" asp-route-id=@item.Id class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-controller="Category" asp-route-id=@item.Id class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        }
+    </div>
+
+</div>
+

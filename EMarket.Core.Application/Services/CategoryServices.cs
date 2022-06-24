@@ -36,24 +36,15 @@ namespace EMarket.Core.Application.Services
         
             var response = await _categoryRepository.GetAllWithIncludeAsync(new() { "Advertisings" });
 
-            var userperadvertising = response
-                .Select(x => new { Contador = x.Advertisings
-                .GroupBy(adver => adver.UserId)
-                .Distinct()
-                .Count() });
-
-            int UserCount = 0;
-
-            foreach (var item in userperadvertising) {
-                UserCount = item.Contador;
-            }
-
             return response.Select(category => new CategoryViewModel() { 
                 Id = category.Id,
                 Name = category.Name,
                 Description = category.Description,
                 AdvertisingQuantity = category.Advertisings.Count,
-                UserPerAdvertising =UserCount
+                UserPerAdvertising =category.Advertisings
+                .GroupBy(adver => adver.UserId)
+                .Distinct()
+                .Count()
             }).ToList();
 
         }
