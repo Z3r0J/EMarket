@@ -205,6 +205,13 @@ namespace WebApp.EMarket.Controllers
 
         }
 
+        public async Task<IActionResult> Details(int id) {
+
+            DetailsAdvertisingViewModel advertising = await _advertisingServices.GetDetailsAdvertising(id);
+
+            return _validateUserSession.HasUser() ? View(advertising) : RedirectToRoute(new {action="Index",controller="User" });
+        }
+
         private string UploadFile(IFormFile file, int id, bool isEditMode = false, string ImagePath = "") {
 
 

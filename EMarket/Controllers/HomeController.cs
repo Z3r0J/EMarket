@@ -44,13 +44,14 @@ namespace EMarket.Controllers
         public async Task<IActionResult> Index(FilterByCategory vm) {
             var user = HttpContext.Session.Get<UserViewModel>("userEmarket");
 
-            if (vm.Name != "") {
+            if (!string.IsNullOrEmpty(vm.Name)) {
 
-                var response = "";
+                var response = await _advertisingServices.GetAdvertisingByName(vm.Name);
+                
 
                 ViewBag.Categories = await _categoryServices.GetAllViewModel();
 
-                return View();
+                return View(response.Where(x=>x.User!=user.Username).ToList());
             }
 
             if (vm.CategoryId == null||vm.CategoryId.Count==0) {

@@ -11,6 +11,22 @@ for details on configuring this project to bundle and minify static web assets. 
     --button-custom-hover: #0e9093;
 }
 
+.dropdown .dropdown-menu {
+    border: 6px solid #1cc0b9!important;
+    border-left: none!important;
+    border-right: none!important;
+    margin: -11px 14px!important;
+}
+
+.dropdown-item {
+    height: 45px!important;
+    font-size: 15px!important;
+}
+.dropdown-item:hover,.dropdown-item:focus {
+ background:var(--green-custom);
+ color:white;
+}
+
 * {
 font-family:Poppins;
 }

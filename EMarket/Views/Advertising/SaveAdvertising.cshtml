@@ -44,7 +44,7 @@
                <div class="card-body">
                    <h2 class="card-title">@(@editMode?"Edit Advertising":"Create Advertising")</h2> 
                    @if (Model.Categories == null || Model.Categories.Count == 0) { 
-                        <h2>Insert a category for add a new Form</h2>
+                        <h2 class="card-title text-center">Insert a category for add a new Advertising</h2>
                     }
                     else{
 
@@ -86,8 +86,10 @@
                         </div>
                         <div class="row h-auto mb-3 mt-2">
                             <input type="hidden" asp-for="PrincipalPhoto"/>
+                            <input type="hidden" asp-for="Id"/>
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-custom btn-lg">@(editMode?"Edit":"Create")</button>
+                                <a asp-action="Index" asp-controller="Advertising" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                    </form>

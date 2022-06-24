@@ -1,11 +1,11 @@
-﻿@using EMarket.Core.Application.ViewModel.Advertising
-@model SaveAdvertisingViewModel
+﻿@using EMarket.Core.Application.ViewModel.Category
+@model SaveCategoryViewModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Category";
 }
 
-<form asp-action="DeletePost" asp-controller="Advertising" class="row d-flex justify-content-center">
+<form asp-action="Delete" asp-controller="Category" class="row d-flex justify-content-center">
     <div class="col-6 mb-4">
         <div class="card">
             <div class="card-body">
@@ -14,7 +14,7 @@
                                             <div class="row h-auto mb-3 mt-2">
                             <div class="col-12 d-flex justify-content-end">
              <button type="submit" class="btn btn-danger btn-lg">Delete</button>
-             <a asp-action="Index" asp-controller="Advertising" class="btn btn-custom">Cancel</a>
+             <a asp-action="Index" asp-controller="Category" class="btn btn-custom">Cancel</a>
                             </div>
                         </div>
 
