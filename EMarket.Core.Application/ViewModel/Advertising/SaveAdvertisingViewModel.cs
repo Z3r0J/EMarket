@@ -1,4 +1,5 @@
-﻿using EMarket.Core.Domain.Entities;
+﻿using EMarket.Core.Application.ViewModel.Category;
+using EMarket.Core.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace EMarket.Core.Application.ViewModel.Advertising
         [DataType(DataType.Upload)]
         public IFormFileCollection Photos { get; set; }
 
-        public List<Domain.Entities.Category> Categories { get; set; }
+        public List<CategoryViewModel> Categories { get; set; }
         public List<Gallery> Gallery { get; set; }
     }
 }

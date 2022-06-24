@@ -1,24 +1,32 @@
 ﻿@using EMarket.Core.Application.ViewModel.Advertising
+@using EMarket.Core.Application.ViewModel.Category
 @model List<AdvertisingViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="border-start border-custom border-5"><h1 class="text-lg-start fs-4">&nbsp;Home</h1></div>
+<div class="border-start border-custom border-5 d-flex justify-content-between">
+    <h1 class="text-lg-start fs-4">&nbsp;Home</h1>
+<a asp-action="Create" asp-controller="Advertising" class="btn btn-dark">Create New</a>    
+</div>
 
 <div class="d-flex justify-content-space-around">
     <div class="row">
         <div class="col-md-12 me-1">
             <div class="card mb-4 h-auto mt-5 w-auto">
                 <div class="card-body">
-                    <form class="container-fluid">
+                    <form class="container-fluid" asp-action="Index" asp-controller="Home">
                     <h3 class="card-title">Filter by Category</h3>
-                     <div class="form-check mt-2 mb-2">   
-                     <input type="checkbox" class="form-check-input" name="CategoryId" value="1" aria-label="Category 1"/>
-                    <label class="form-check-label" for="CategoryId">Category 1</label>
-                    </div>
-                    <buttonn type="submit" class="btn btn-custom">Filter</buttonn>
+
+                       @foreach(CategoryViewModel category in ViewBag.Categories ){
+                    <div class="form-check mt-2 mb-2">
+
+                            <input type="checkbox" class="form-check-input" name="CategoryId" id="category-@category.Id" value=@(category.Id) />
+                            <label class="form-check-label" for="category-@category.Id">@category.Name</label>
+                         </div>
+                       }
+                    <button type="submit" class="btn btn-custom">Filter</button>
                     </form>
                 </div>
             </div>

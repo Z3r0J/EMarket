@@ -9,6 +9,6 @@ namespace EMarket.Core.Application.Interfaces.Services
 {
     public interface IAdvertisingServices:IGenericServices<SaveAdvertisingViewModel,AdvertisingViewModel>
     {
-        
+        Task<List<AdvertisingViewModel>> FilterByCategory(List<int?> categories);
     }
 }

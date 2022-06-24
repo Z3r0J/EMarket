@@ -57,24 +57,59 @@ namespace EMarket.Core.Application.Services
                 PrincipalPhoto = advertising.PrincipalPhoto,
                 Category = advertising.Categories.Name,
                 User = advertising.User.Username,
-                Gallery = advertising.Gallery.ToList()
+                Gallery = advertising.Gallery.OrderByDescending(x => x.GalleryId).Take(4).ToList()
             }).ToList();
         
         }
 
-        public async Task<SaveAdvertisingViewModel> GetByIdSaveViewModel(int id) { 
+        public async Task<List<AdvertisingViewModel>> FilterByCategory(List<int?> categories) { 
         
-            var response = await _advertisingRepository.GetByIdAsync(id);
+            var response = await _advertisingRepository.GetAllWithIncludeAsync(new() { "Gallery", "Categories", "User" });
 
-            return new() { 
-            Id = response.Id,
-            Name = response.Name,
-            Description = response.Description,
-            Price = response.Price,
-            PrincipalPhoto = response.PrincipalPhoto,
-            CategoryId = response.CategoryId,
-            UserId = response.UserId
-            };
+            List<AdvertisingViewModel> vm = new();
+
+            foreach (var category in categories)
+            {
+
+                IEnumerable<Advertising> filtered = response.Where(advertising => advertising.CategoryId == category);
+
+                foreach (var advertising in filtered)
+                {
+                    AdvertisingViewModel advertisingView = new()
+                    {
+                        Id = advertising.Id,
+                        Name = advertising.Name,
+                        Description = advertising.Description,
+                        Price = advertising.Price,
+                        PrincipalPhoto = advertising.PrincipalPhoto,
+                        Category = advertising.Categories.Name,
+                        User = advertising.User.Username,
+                        Gallery = advertising.Gallery.OrderByDescending(x => x.GalleryId).Take(4).ToList()
+                    };
+                    vm.Add(advertisingView);
+                }
+            }
+
+            return vm;
+
+        }
+
+        public async Task<SaveAdvertisingViewModel> GetByIdSaveViewModel(int id) {
+
+            var response = await _advertisingRepository.GetAllWithIncludeAsync(new() { "Gallery"});
+
+
+            return response.Select(adv => new SaveAdvertisingViewModel()
+            {
+                Id = adv.Id,
+                Name = adv.Name,
+                Description = adv.Description,
+                Price = adv.Price,
+                PrincipalPhoto = adv.PrincipalPhoto,
+                CategoryId = adv.CategoryId,
+                UserId = adv.UserId,
+                Gallery = adv.Gallery.OrderByDescending(x=>x.GalleryId).Take(4).ToList()
+            }).FirstOrDefault(adv => adv.Id == id);
         
         }
 
