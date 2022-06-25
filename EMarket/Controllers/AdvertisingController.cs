@@ -53,13 +53,16 @@ namespace WebApp.EMarket.Controllers
 
             if (!ModelState.IsValid)
             {
+                vm.Gallery = new();
+                vm.Categories = await _categoryServices.GetAllViewModel();
                 return View("SaveAdvertising",vm);
             }
 
             if (vm.Photos.Count>4)
             {
                 ModelState.AddModelError("Photos", "No more than 1 to 4 photos please.");
-
+                vm.Gallery=new();
+                vm.Categories = await _categoryServices.GetAllViewModel();
                 return View("SaveAdvertising",vm);
             }
 
@@ -118,6 +121,8 @@ namespace WebApp.EMarket.Controllers
             }
             if (!ModelState.IsValid)
             {
+                vm.Gallery = new();
+                vm.Categories = await _categoryServices.GetAllViewModel();
 
                 return View("SaveAdvertising",vm);
             }
@@ -142,7 +147,8 @@ namespace WebApp.EMarket.Controllers
                 }
                 if (vm.Photos.Count > 4)
                 {
-
+                    vm.Gallery = new();
+                    vm.Categories = await _categoryServices.GetAllViewModel();
                     ModelState.AddModelError("Photos", "No more than 1 to 4 photos please.");
 
                     return View("SaveAdvertising", vm);
